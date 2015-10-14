@@ -5,9 +5,8 @@
  */
 package textodelimitado;
 
-import java.text.FieldPosition;
 import java.text.NumberFormat;
-import java.text.ParsePosition;
+import java.util.Locale;
 
 /**
  *
@@ -18,46 +17,13 @@ public class Product {
     private String cod;
     private String descr;
     private int precio;
-    NumberFormat nf;
 
     public Product() {
-        this.nf = new NumberFormat() {
 
-            @Override
-            public StringBuffer format(double d, StringBuffer sb, FieldPosition fp) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public StringBuffer format(long l, StringBuffer sb, FieldPosition fp) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public Number parse(String string, ParsePosition pp) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
     }
 
     public Product(String cod, String descr, int precio) {
-        this.nf = new NumberFormat() {
 
-            @Override
-            public StringBuffer format(double d, StringBuffer sb, FieldPosition fp) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public StringBuffer format(long l, StringBuffer sb, FieldPosition fp) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public Number parse(String string, ParsePosition pp) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
         this.cod = cod;
         this.descr = descr;
         this.precio = precio;
@@ -89,7 +55,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Cod: " + cod + "\nDescripción: " + descr + "\nPrecio: " + precio;
+        String nf;
+        return "Cod: " + cod + "\nDescripción: " + descr + "\nPrecio: " + (nf = NumberFormat.getCurrencyInstance(Locale.FRANCE).format(precio));
     }
 
 }

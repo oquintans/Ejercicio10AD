@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +26,7 @@ public class TextoDelimitado {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
+        try {           
             // TODO code application logic here
             PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("texto1.txt")));
             BufferedReader br = new BufferedReader(new FileReader("texto1.txt"));
